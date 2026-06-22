@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 · 一段关于游戏与日常的叙述</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fef6eb 0%, #fde8cf 50%, #f7d9b8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.7;
+      color: #3d2c1b;
+    }
+
+    .card {
+      max-width: 780px;
+      width: 100%;
+      background: #fffcf8;
+      border-radius: 48px 24px 48px 24px;
+      box-shadow: 0 20px 40px -12px rgba(160, 100, 50, 0.25),
+                  0 8px 24px rgba(220, 160, 100, 0.10);
+      padding: 2.8rem 2.5rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 32px 16px 32px 16px;
+      }
+    }
+
+    .hero {
+      margin-bottom: 2.2rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      color: #7a5e41;
+      border-left: 4px solid #dcb48c;
+      padding-left: 1.2rem;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #4a3420;
+      margin: 0.5rem 0 1.8rem 0;
+      line-height: 1.2;
+    }
+
+    h1 small {
+      font-size: 1.2rem;
+      font-weight: 350;
+      color: #b48b68;
+      display: block;
+      margin-top: 0.4rem;
+      letter-spacing: 0.08em;
+    }
+
+    .intro {
+      margin-bottom: 2.4rem;
+    }
+
+    .intro p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #4d3a28;
+    }
+
+    .feature-list {
+      background: #fcf6ef;
+      padding: 1.8rem 2rem;
+      border-radius: 28px 12px 28px 12px;
+      margin: 2rem 0 2.2rem 0;
+    }
+
+    .feature-list h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #674d30;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-list h2::before {
+      content: "· · ·";
+      font-size: 0.9rem;
+      letter-spacing: 0.3em;
+      color: #be9b7a;
+      margin-right: 0.2rem;
+    }
+
+    .feature-list ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+    }
+
+    .feature-list li {
+      flex: 1 1 200px;
+      font-size: 0.98rem;
+      padding: 0.3rem 0 0.3rem 1.6rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23c7a27d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>') left center no-repeat;
+      background-size: 16px;
+      color: #4f3b28;
+    }
+
+    .scene-note {
+      background: #f9f0e6;
+      padding: 1.6rem 1.8rem;
+      border-radius: 20px;
+      margin: 1.8rem 0 2rem 0;
+      font-size: 0.98rem;
+      color: #4d3825;
+      border: 1px solid #eddccd;
+    }
+
+    .scene-note strong {
+      color: #674d30;
+      font-weight: 500;
+    }
+
+    .faq-note {
+      margin: 2rem 0 1.2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.6rem;
+      font-size: 0.95rem;
+      color: #6d5540;
+      border-top: 1px dashed #e6d3bf;
+      padding-top: 1.8rem;
+    }
+
+    .faq-note span {
+      background: #f7ede2;
+      padding: 0.2rem 1rem 0.2rem 1.2rem;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+
+    .faq-note span::before {
+      content: "?";
+      display: inline-block;
+      margin-right: 0.4rem;
+      color: #b48b68;
+      font-weight: 500;
+    }
+
+    .closing {
+      margin: 2.2rem 0 0.6rem 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4d3a28;
+    }
+
+    .closing a {
+      color: #816747;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid #dcb48c;
+      padding-bottom: 0.05rem;
+      transition: border-color 0.15s, color 0.15s;
+      border-radius: 0;
+    }
+
+    .closing a:hover {
+      border-bottom-color: #a77c5a;
+      color: #4d3020;
+    }
+
+    .disclaimer {
+      margin-top: 2.8rem;
+      font-size: 0.8rem;
+      color: #a58c77;
+      text-align: left;
+      border-top: 1px solid #eee3d7;
+      padding-top: 1.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dotted #edd2bc;
+      margin: 1.4rem 0;
+      opacity: 0.5;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: #826a51;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero">
+      <p>那个傍晚，雨落在窗台上，我点开了一个熟悉的名字。</p>
+    </div>
+    <h1>
+      九游
+      <small>不是入口，是日常里的一点陪伴</small>
+    </h1>
+
+    <div class="intro">
+      <p>
+        人们常常说起「游戏」这个词，语调轻松，仿佛它只属于空闲。但你或许也发现，有些事物悄悄嵌进了生活的纹理——不是喧嚣的打扰，更像桌角那杯温茶，不烫，但一直在。对我而言，<a href="https://9y-9game.com" style="color:#73614c; text-decoration:none; border-bottom:2px solid #dcb48c; padding-bottom:1px;">九游</a>便是这样一种存在：当我想找个安静的角落，翻翻不同风格的作品，或者只是看看别人在玩什么，它总在那里，不催促，不张扬。
+      </p>
+      <p>
+        很长一段时间里，我把它当作一本慢慢翻的杂志。没有必须完成的进度，没有排行榜的压力，只有一些设计精巧的关卡、一段耐人寻味的故事，或是仅仅一幅让人多看几秒的画面。这种浏览本身，就成了一种属于个人的节奏。
+      </p>
+    </div>
+
+    <div class="feature-list">
+      <h2>几个让我觉得舒服的地方</h2>
+      <ul>
+        <li>界面干净，没有弹窗追着问你要不要分享</li>
+        <li>分类不复杂，按心情找内容比按标签更自然</li>
+        <li>偶尔能遇见风格独特的个人作品</li>
+        <li>加载轻快，不打断正在酝酿的氛围</li>
+        <li>评论区简短温和，更像邻座朋友的闲聊</li>
+      </ul>
+    </div>
+
+    <div class="scene-note">
+      <strong>一个平凡的场景。</strong> 我习惯在睡前二十分钟打开它，不戴耳机，把屏幕调暗。有时候玩一局简单的解谜，有时候只是看看新上架的插画集推荐。那种感觉不像在使用一个产品，更像是推开一扇虚掩的门，里面亮着一盏不刺眼的灯。
+    </div>
+
+    <div class="faq-note">
+      <span>需要注册吗</span>
+      <span>内容更新频率如何</span>
+      <span>有没有社区功能</span>
+      <span>移动端体验怎样</span>
+    </div>
+    <p style="font-size:0.9rem; color:#8e7864; margin-top:-0.2rem; margin-bottom:1.2rem;">
+      这些疑问往往在慢慢逛的过程中自然就找到了答案。每个人使用的方式不同，但那份从容倒是相似的。
+    </p>
+
+    <hr>
+
+    <div class="closing">
+      <p>
+        如果你也喜欢那种不赶时间、不被算法推着走的感觉，不妨在某个安静的午后打开 <a href="https://9y-9game.com">九游</a>，随便看看。不必抱着任何期待，只是让手指带着眼睛走一走就好。好的内容会自己拉住你，就像那场雨，下得刚刚好。
+      </p>
+    </div>
+
+    <div class="disclaimer">
+      <p>记录一次个人化的浏览体验，不构成对任何功能的承诺。网站内容以实际页面为准。</p>
+    </div>
+  </div>
+</body>
+</html>
